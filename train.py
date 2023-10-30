@@ -12,7 +12,7 @@ from utils import scan_checkpoint, mel2snd
 import os
 import pandas as pd
 
-def train(dataloader, model, optimizer, scheduler, args, train_data, test_data, g_hifi, subnum, cv, stt):
+def train(dataloader, model, optimizer, scheduler, args, train_data, test_data, g_hifi, subnum, cv):
     start = 0
     min_val_loss = float('inf')
     tr_loss = {}
@@ -48,7 +48,7 @@ def train(dataloader, model, optimizer, scheduler, args, train_data, test_data, 
                 state[k] = v.to(args.device)
     ##if not start==0:
     model['G'].eval()
-    save_result(model, g_hifi, train_data, test_data, start+1, args,subnum,cv,stt,tr_loss)
+    save_result(model, g_hifi, train_data, test_data, start+1, args,subnum,cv, tr_loss)
     model['G'].train()
 
     print("Start to train classifier")
@@ -112,13 +112,13 @@ def train(dataloader, model, optimizer, scheduler, args, train_data, test_data, 
 
         if (torch.IntTensor(args.print_epochs) == (epo + 1)).sum():
             model['G'].eval()
-            save_result(model, g_hifi, train_data, test_data, epo + 1, args, subnum, cv, stt, tr_loss)
+            save_result(model, g_hifi, train_data, test_data, epo + 1, args, subnum, cv, tr_loss)
             model['G'].train()
 
         scheduler['G'].step(epo)
 
 
-def save_result(model, g_hifi, train_data, test_data, epo, args, sub, cv, stt, train_loss, train=True):
+def save_result(model, g_hifi, train_data, test_data, epo, args, sub, cv, train_loss, train=True):
     print("Start Saving Result")
 
     indices = sio.loadmat(args.cv_ind)['cv_ind'][0][sub].squeeze()

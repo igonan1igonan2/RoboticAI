@@ -26,7 +26,7 @@ torch.backends.cudnn.deterministic = True
 torch.backends.cudnn.benchmark = False
 
 
-def main(args, subnum, CV,stt_model):
+def main(args, subnum, CV):
     args.save_folder = 'result_' + args.mel_style
 
     if not os.path.exists(args.save_folder):
@@ -95,7 +95,7 @@ def main(args, subnum, CV,stt_model):
     generator.remove_weight_norm()
     print('Sub = ' + str(subnum) + ' | ' + 'CV = ' + str(CV))
 
-    train(tr_dataloader, model, optimizer, scheduler, args, tr_val_dataloader, te_dataloader, generator, subnum, CV, stt_model)
+    train(tr_dataloader, model, optimizer, scheduler, args, tr_val_dataloader, te_dataloader, generator, subnum, CV)
 
 
 if __name__ == "__main__":
@@ -103,7 +103,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--save_num", type=int, default=1)  ##GNWS
     parser.add_argument("--epoch", type=int, default=1000)
-    parser.add_argument("--cv_ind", type=str, default='cv_ind27.mat')
+    parser.add_argument("--cv_ind", type=str, default='cv_ind_615.mat')
     parser.add_argument("--batch_size", type=int, default=4)
     parser.add_argument("--save_sub", type=str, default="/")
     parser.add_argument("--path_to_data_folder", type=str, default=os.getcwd())
@@ -151,7 +151,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     subnum = 0
-    sttmodel = whisper.load_model('large').to('cpu')
+    # sttmodel = whisper.load_model('large').to('cpu')
     sub=[1]  #[
 
     CVs = [1]
@@ -159,5 +159,5 @@ if __name__ == "__main__":
     for cv in CVs:
         for subnum in sub:
             main(
-                args=args, subnum=subnum, CV=cv, stt_model = sttmodel
+                args=args, subnum=subnum, CV=cv
             )
