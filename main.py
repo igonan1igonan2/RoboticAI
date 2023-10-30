@@ -11,7 +11,7 @@ import random
 import os
 import json
 from models_hifi import Generator
-import whisper
+# import whisper
 
 os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
 os.environ['CUDA_VISIBLE_DEVICES'] = '0'
