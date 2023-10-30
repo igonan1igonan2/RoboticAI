@@ -10,7 +10,7 @@ for subnum = subnums
     subname = ['sub' num2str(subnum)];
     
     fs_imu = 50
-    fs_snd = 44100;
+    fs_snd = 48000;
     saveDir_imu = [datadir '\epo\sub' num2str(subnum) '\imu\'];
     if ~isfolder(saveDir_imu)
         mkdir(saveDir_imu);
