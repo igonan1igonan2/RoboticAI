@@ -2,9 +2,9 @@ clear all; clc; close all;
 
 %%
 
-filenames = {'sentence1','sentence2','sentence3','sentence4','sentence5','sentence6','sentence7','sentence8','sentence9'}
-savenames = {'1','2','3','4','5','6','7','8','9'}
-subnums = [1]
+filenames = {'sentence2','sentence5','sentence6','sentence7','sentence8','sentence9'}
+savenames = {'2','5','6','7','8','9'}
+subnums = [2]
 datadir = 'data'
 for subnum = subnums
     subname = ['sub' num2str(subnum)];

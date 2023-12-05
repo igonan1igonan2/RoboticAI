@@ -152,7 +152,7 @@ if __name__ == "__main__":
 
     subnum = 0
     # sttmodel = whisper.load_model('large').to('cpu')
-    sub=[1]  #[
+    sub=[2]  #[
 
     CVs = [1]
 

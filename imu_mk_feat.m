@@ -1,6 +1,6 @@
 clear all
-Subs = [1]
-sessions = [1,2,3,4,5,6,7,8,9]
+Subs = [2]
+sessions = [2,5,6,7,8,9]
 mel_feat = 'nr';
 datadir = 'data';
 for s = Subs

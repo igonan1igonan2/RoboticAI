@@ -1,7 +1,7 @@
 clear all
 
-Subs = [1]
-sessions = {'1','2','3','4','5','6','7','8','9'}%,'num'}
+Subs = [2]
+sessions = {'2','5','6','7','8','9'}%,'num'}
 min_db = log(1e-4)
 datadir = 'data'
 mel_feat = 'nr'
